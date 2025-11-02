@@ -1,9 +1,11 @@
 # advance_nmap_scan
 Advance nmap scan
 
-Tired of just white/black block of nmap output and more requirements to find a vulnerability.
+Tired of just white/black block of nmap output and needs more requirements to find a vulnerability.
 
-I created this Python code to satisfy myself (not you).. hehe
+Please do not compare this free stuff with a commercial one..
+
+I've created this Python code to satisfy myself (not you).. hehe
 
 For sure, with an HTML viewer for ease of eye-catching on the prizes..
 
