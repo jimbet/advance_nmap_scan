@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sir Jimbet - Nmap Vulnerability Scan Viewer</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,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" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --bg-card: #ffffff;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+            --critical: #dc3545;
+            --high: #fd7e14;
+            --medium: #ffc107;
+            --low: #28a745;
+            --info: #17a2b8;
+            --success: #28a745;
+            --header-bg: #2c3e50;
+            --header-text: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --bg-card: #2d2d2d;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --border-color: #404040;
+            --shadow: 0 2px 8px rgba(0,0,0,0.3);
+            --header-bg: #1a1a1a;
+            --header-text: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-color);
+        }
+
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .upload-section {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 2px dashed var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .upload-section.drag-over {
+            border-color: #007bff;
+            background: rgba(0, 123, 255, 0.05);
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            opacity: 0.6;
+        }
+
+        .scan-info {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+
+        .scan-info h2 {
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .host-card {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+
+        .host-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .host-title {
+            font-size: 22px;
+            color: var(--text-primary);
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .badge-info {
+            background: var(--info);
+            color: white;
+        }
+
+        .os-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+        }
+
+        .os-section h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .os-item {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .os-item:last-child {
+            border-bottom: none;
+        }
+
+        .port-section {
+            margin: 20px 0;
+        }
+
+        .port-card {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--info);
+        }
+
+        .port-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .port-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .port-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .vuln-section {
+            margin-top: 20px;
+        }
+
+        .vuln-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .vuln-count {
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .vuln-count.has-vulns {
+            background: var(--critical);
+            color: white;
+        }
+
+        .vuln-count.no-vulns {
+            background: var(--success);
+            color: white;
+        }
+
+        .vuln-card {
+            background: var(--bg-card);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid;
+        }
+
+        .vuln-card.critical {
+            border-left-color: var(--critical);
+        }
+
+        .vuln-card.high {
+            border-left-color: var(--high);
+        }
+
+        .vuln-card.medium {
+            border-left-color: var(--medium);
+        }
+
+        .vuln-card.low {
+            border-left-color: var(--low);
+        }
+
+        .vuln-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .severity-badge {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .severity-critical {
+            background: var(--critical);
+            color: white;
+        }
+
+        .severity-high {
+            background: var(--high);
+            color: white;
+        }
+
+        .severity-medium {
+            background: var(--medium);
+            color: #333;
+        }
+
+        .severity-low {
+            background: var(--low);
+            color: white;
+        }
+
+        .vuln-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .vuln-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+
+        .vuln-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .vuln-link:hover {
+            text-decoration: underline;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .port-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            border: 4px solid var(--border-color);
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>
+                <span>👁️🔍👁️</span>
+                Sir Jimbet Nmap Vulnerability Scan Viewer # <a target='_blank' href='https://github.com/jimbet/'>Sir Jimbet - GitHub</a>
+            </h1>
+            <div class="controls">
+                <label for="fileInput" class="btn btn-primary">
+                    📁 Load JSON File
+                </label>
+                <input type="file" id="fileInput" accept=".json">
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon"><a href="#" onclick="document.getElementById('fileInput').click(); return false;">📄</a></div>
+            <h2>Load Nmap Scan Results</h2>
+            <p style="margin: 15px 0; color: var(--text-secondary);">
+                Click the "Load JSON File" button or drag & drop your scan results here
+            </p>
+            <p style="font-size: 14px; color: var(--text-secondary);">
+                Supported format: JSON files from jim_nmap_scanner.py
+            </p>
+        </div>
+
+        <div id="content"></div>
+    </div>
+
+    <script>
+        // Theme Management
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        // File Upload
+        const fileInput = document.getElementById('fileInput');
+        const uploadSection = document.getElementById('uploadSection');
+        const content = document.getElementById('content');
+
+        fileInput.addEventListener('change', handleFileSelect);
+
+        // Drag and Drop
+        uploadSection.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadSection.classList.add('drag-over');
+        });
+
+        uploadSection.addEventListener('dragleave', () => {
+            uploadSection.classList.remove('drag-over');
+        });
+
+        uploadSection.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadSection.classList.remove('drag-over');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                loadFile(files[0]);
+            }
+        });
+
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (file) {
+                loadFile(file);
+            }
+        }
+
+        function loadFile(file) {
+            if (!file.name.endsWith('.json')) {
+                alert('Please select a JSON file');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    displayResults(data);
+                    uploadSection.style.display = 'none';
+                } catch (error) {
+                    alert('Error parsing JSON file: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function displayResults(data) {
+            const scanInfo = data.scan_info || {};
+            const hosts = data.hosts || [];
+
+            let html = '';
+
+            // Scan Info Section
+            html += `
+                <div class="scan-info">
+                    <h2>📊 Scan Information</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Target</span>
+                            <span class="info-value">${scanInfo.target || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">IP Type</span>
+                            <span class="info-value">${scanInfo.ip_type ? scanInfo.ip_type.toUpperCase() : 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Timestamp</span>
+                            <span class="info-value">${scanInfo.timestamp ? new Date(scanInfo.timestamp).toLocaleString() : 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Scanner</span>
+                            <span class="info-value">${scanInfo.scanner || 'N/A'}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Tor Enabled</span>
+                            <span class="info-value">${scanInfo.proxy_type === 'Tor' ? '✅ Yes' : '❌ No'}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Hosts Section
+            if (hosts.length === 0) {
+                html += `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔍</div>
+                        <h3>No hosts found in scan results</h3>
+                    </div>
+                `;
+            } else {
+                hosts.forEach(host => {
+                    html += renderHost(host);
+                });
+            }
+
+            content.innerHTML = html;
+        }
+
+        function renderHost(host) {
+            let html = `
+                <div class="host-card">
+                    <div class="host-header">
+                        <h2 class="host-title">🖥️ ${host.ip || 'Unknown IP'}</h2>
+                        ${host.hostname ? `<span class="badge badge-info">${host.hostname}</span>` : ''}
+                    </div>
+            `;
+
+            // OS Detection
+            if (host.os && host.os.length > 0) {
+                html += `
+                    <div class="os-section">
+                        <h3>💻 Operating System Detection</h3>
+                `;
+                host.os.forEach(os => {
+                    html += `
+                        <div class="os-item">
+                            <strong>${os.name}</strong>
+                            <span style="color: var(--text-secondary);">(Accuracy: ${os.accuracy}%)</span>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+            }
+
+            // Ports
+            if (host.ports && host.ports.length > 0) {
+                html += `<div class="port-section">`;
+                host.ports.forEach(port => {
+                    html += renderPort(port);
+                });
+                html += `</div>`;
+            } else {
+                html += `<p style="color: var(--text-secondary); padding: 20px 0;">No open ports detected</p>`;
+            }
+
+            html += `</div>`;
+            return html;
+        }
+
+        function renderPort(port) {
+            const vulnCount = port.vulnerabilities ? port.vulnerabilities.length : 0;
+
+            let html = `
+                <div class="port-card">
+                    <div class="port-header">
+                        <span class="port-title">
+                            🔌 Port ${port.port}/${port.protocol} - ${port.service || 'Unknown'}
+                        </span>
+                        <span class="badge ${port.state === 'open' ? 'badge-success' : 'badge-info'}">
+                            ${port.state || 'Unknown'}
+                        </span>
+                    </div>
+                    <div class="port-details">
+                        ${port.product ? `
+                            <div class="info-item">
+                                <span class="info-label">Product</span>
+                                <span class="info-value">${port.product} ${port.version || ''}</span>
+                            </div>
+                        ` : ''}
+                        ${port.extrainfo ? `
+                            <div class="info-item">
+                                <span class="info-label">Extra Info</span>
+                                <span class="info-value">${port.extrainfo}</span>
+                            </div>
+                        ` : ''}
+                        ${port.banner ? `
+                            <div class="info-item">
+                                <span class="info-label">Banner</span>
+                                <span class="info-value" style="font-family: monospace; font-size: 12px;">${port.banner}</span>
+                            </div>
+                        ` : ''}
+                    </div>
+            `;
+
+            // Vulnerabilities
+            if (port.vulnerabilities && port.vulnerabilities.length > 0) {
+                html += `
+                    <div class="vuln-section">
+                        <div class="vuln-header">
+                            <h4>⚠️ Vulnerabilities</h4>
+                            <span class="vuln-count has-vulns">${vulnCount} Found</span>
+                        </div>
+                `;
+                port.vulnerabilities.forEach(vuln => {
+                    html += renderVulnerability(vuln);
+                });
+                html += `</div>`;
+            } else {
+                html += `
+                    <div class="vuln-section">
+                        <div class="vuln-header">
+                            <h4>✅ Vulnerabilities</h4>
+                            <span class="vuln-count no-vulns">None Found</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            html += `</div>`;
+            return html;
+        }
+
+        function renderVulnerability(vuln) {
+            const severity = (vuln.severity || 'N/A').toLowerCase();
+            const severityClass = ['critical', 'high', 'medium', 'low'].includes(severity) ? severity : 'low';
+
+            return `
+                <div class="vuln-card ${severityClass}">
+                    <div class="vuln-title">
+                        <span>${vuln.cve_id || vuln.id || 'Unknown CVE'}</span>
+                        <span class="severity-badge severity-${severityClass}">
+                            ${(vuln.severity || 'N/A').toUpperCase()}
+                        </span>
+                    </div>
+                    ${vuln.description ? `
+                        <div class="vuln-description">${vuln.description}</div>
+                    ` : ''}
+                    <div class="vuln-meta">
+                        ${vuln.cvss_score && vuln.cvss_score !== 'N/A' ? `
+                            <span><strong>CVSS Score:</strong> ${vuln.cvss_score}</span>
+                        ` : ''}
+                        ${vuln.published ? `
+                            <span><strong>Published:</strong> ${new Date(vuln.published).toLocaleDateString()}</span>
+                        ` : ''}
+                        ${vuln.url ? `
+                            <a href="${vuln.url}" target="_blank" class="vuln-link">View Details →</a>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
