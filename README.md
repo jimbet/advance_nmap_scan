@@ -16,7 +16,7 @@ How to execute:
 git clone https://github.com/jimbet/advance_nmap_scan.git
 cd advance_nmap_scan
 chmod +x jim_nmap_scanner.py
-chmod +x requirements.sh
+chmod +x requirement.sh
 bash requirements.sh
 python jim_nmap_scanner.py
 ```
