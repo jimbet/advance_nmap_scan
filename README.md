@@ -21,4 +21,7 @@ bash requirements.sh
 python jim_nmap_scanner.py
 ```
 <br><br>
-
+![Main_Window](https://raw.githubusercontent.com/jimbet/advance_nmap_scan/refs/heads/main/1.png)
+![TOR](https://raw.githubusercontent.com/jimbet/advance_nmap_scan/refs/heads/main/2.png)
+![Main Web](https://raw.githubusercontent.com/jimbet/advance_nmap_scan/refs/heads/main/3.png)
+![Vuln Web](https://raw.githubusercontent.com/jimbet/advance_nmap_scan/refs/heads/main/4.png)
