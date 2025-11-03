@@ -58,6 +58,15 @@ eval "$ENABLE_TOR"
 
 ### If using Windows, you have to install GIT and Microsoft C++ Distribution Tool >14.x
 ### Download TOR - [https://www.torproject.org/download/tor/](https://www.torproject.org/download/tor/)
+### Another requirement : 
+### Open PowerShell as administrator by searching for it in the Start menu, right-clicking, and selecting "Run as administrator." 
+### Run the command Set-ExecutionPolicy RemoteSigned -Scope CurrentUser and confirm with 'Y' to allow script execution. 
+### Then, execute Invoke-Expression "& {$(Invoke-RestMethod get.scoop.sh)} -RunAsAdmin" to download and install Scoop. 
+### In PowerShell : scoop install proxychains
+### In PowerShell : scoop install which
+### Rename or copy original proxychains_win32_x64.exe into proxychains.exe
+### Setting PATH temporarily by : (or you can set the permanent environment yourself)
+### set PATH=%PATH%;~\scoop\apps\proxychains\current;~\scoop\shims
 
 # Verify installation
 echo "=== Verification ==="
